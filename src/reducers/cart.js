@@ -8,29 +8,35 @@ import { createAsyncState } from 'lib/requestUtils';
 const initialState = {
   items: [],
   listAsyncState: createAsyncState.initial(),
-  curdAsyncState: createAsyncState.initial(),
+  cardAsyncState: createAsyncState.initial(),
 };
 
 export default (state = initialState, action) => {
-  const { type, payload = {}, async = {} } = action;
+  const { type, payload = {} } = action;
 
   switch (type) {
+    case CARTS_ACTIONS.UPDATE_CART_LIST_PENDING:
+    case CARTS_ACTIONS.ADD_CART_LIST_PENDING:
+      return produce(state, (draft) => {
+        draft.listAsyncState = createAsyncState.pending();
+      });
+
     case CARTS_ACTIONS.UPDATE_CART_LIST_SUCCESS:
       return produce(state, (draft) => {
         draft.items = payload.map((item) => ({ ...item, isChecked: true }));
-        draft.listAsyncState = async;
+        draft.listAsyncState = createAsyncState.success();
       });
 
-    case CARTS_ACTIONS.UPDATE_CART_LIST_PENDING:
     case CARTS_ACTIONS.UPDATE_CART_LIST_ERROR:
+    case CARTS_ACTIONS.ADD_CART_LIST_ERROR:
       return produce(state, (draft) => {
-        draft.listAsyncState = async;
+        draft.listAsyncState = createAsyncState.error(payload);
       });
 
     case CARTS_ACTIONS.ADD_CART_LIST_SUCCESS:
       return produce(state, (draft) => {
         draft.items.push({ ...payload, isChecked: true });
-        draft.curdAsyncState = async;
+        draft.cardAsyncState = createAsyncState.success(payload);
       });
 
     case CARTS_ACTIONS.UPDATE_CART_ITEM_SUCCESS:
@@ -39,7 +45,7 @@ export default (state = initialState, action) => {
         const targetIndex = state.items.findIndex(({ id }) => id === updatedId);
 
         draft.items[targetIndex] = { ...draft.items[targetIndex], ...payload };
-        draft.curdAsyncState = async;
+        draft.cardAsyncState = createAsyncState.success(payload);
       });
 
     case CARTS_ACTIONS.UPDATE_CART_ITEM_CHECKED:
