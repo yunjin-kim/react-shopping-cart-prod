@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-shopping-cart-prod/static/css/main.31688b85.css",
-    "main.js": "/react-shopping-cart-prod/static/js/main.416653ac.js",
+    "main.js": "/react-shopping-cart-prod/static/js/main.b59873ca.js",
     "static/media/NanumBarunGothicWebLight.ttf": "/react-shopping-cart-prod/static/media/NanumBarunGothicWebLight.5f9072d6ccf1432fe98b.ttf",
     "static/media/KirangHaerang-Regular.woff": "/react-shopping-cart-prod/static/media/KirangHaerang-Regular.d4bb3268fef847e8ffaa.woff",
     "static/media/NanumBarunGothicWebBold.ttf": "/react-shopping-cart-prod/static/media/NanumBarunGothicWebBold.8ce7a1d0d22652c5b385.ttf",
@@ -26,10 +26,10 @@
     "static/media/fa-v4compatibility.woff2": "/react-shopping-cart-prod/static/media/fa-v4compatibility.2e77423e3ed431908eda.woff2",
     "index.html": "/react-shopping-cart-prod/index.html",
     "main.31688b85.css.map": "/react-shopping-cart-prod/static/css/main.31688b85.css.map",
-    "main.416653ac.js.map": "/react-shopping-cart-prod/static/js/main.416653ac.js.map"
+    "main.b59873ca.js.map": "/react-shopping-cart-prod/static/js/main.b59873ca.js.map"
   },
   "entrypoints": [
     "static/css/main.31688b85.css",
-    "static/js/main.416653ac.js"
+    "static/js/main.b59873ca.js"
   ]
 }
